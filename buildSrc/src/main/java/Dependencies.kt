@@ -6,7 +6,6 @@ object Modules {
   val app = ":app"
   val navigation = ":navigation"
   val common = ":common"
-  val commonTest = ":common_test"
   val local = ":data:local"
   val remote = ":data:remote"
   val model = ":data:model"
@@ -54,14 +53,17 @@ object Versions {
 }
 
 object Libraries {
+
   // KOIN
   val koin = "org.koin:koin-android:${Versions.koin}"
   val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
   val koinExp = "org.koin:koin-androidx-ext:${Versions.koin}"
+
   // ROOM
   val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
   val roomRunTime = "androidx.room:room-runtime:${Versions.room}"
   val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
   // RETROFIT
   val retrofitCoroutineAdapter =
     "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofitCoroutines}"
@@ -69,6 +71,7 @@ object Libraries {
   val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
   val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
   val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+
   // GLIDE
   val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
@@ -82,6 +85,7 @@ object AndroidLibraries {
   // KOTLIN
   val kotlinCoroutineAndroid =
     "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
   // ANDROID
   val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
   val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"

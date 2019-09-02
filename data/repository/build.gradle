@@ -19,5 +19,4 @@ dependencies {
     testImplementation TestLibraries.mockk
     testImplementation TestLibraries.archCoreTest
     testImplementation TestLibraries.coroutine
-    testImplementation project(Modules.commonTest)
 }

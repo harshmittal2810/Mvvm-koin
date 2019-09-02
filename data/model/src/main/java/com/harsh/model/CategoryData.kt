@@ -30,7 +30,8 @@ data class CategoryData(
   @SerializedName("status")
   val status: String?,
 
-  var lastRefreshed: Date
+  var lastRefreshed: Date,
+  var categoryName: String
 ) {
   /**
    * We consider that an [CategoryData] is outdated when the last time

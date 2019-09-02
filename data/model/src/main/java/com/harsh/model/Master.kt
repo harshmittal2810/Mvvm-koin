@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit
 
 @Entity
 data class Master(
-
   @PrimaryKey
   @SerializedName("name")
   val name: String,

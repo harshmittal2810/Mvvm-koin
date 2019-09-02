@@ -8,11 +8,12 @@ import com.harsh.common.base.BaseFragment
 import com.harsh.common.base.BaseViewModel
 import com.harsh.home.databinding.FragmentHomeBinding
 import com.harsh.home.views.FragmentSectionsAdapter
+import com.harsh.model.Master
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [BaseFragment] subclass
- * that will show a list of top [User] from Github's API.
+ * that will show a list of top [Master] from API.
  */
 class HomeFragment : BaseFragment() {
 
@@ -39,9 +40,9 @@ class HomeFragment : BaseFragment() {
   private fun configureViewPager() {
     binding.pager.adapter = FragmentSectionsAdapter(childFragmentManager)
     binding.tabLayout.setupWithViewPager(binding.pager, true)
+    binding.pager.offscreenPageLimit = 1
   }
 
   override fun getViewModel(): BaseViewModel = viewModel
-  // ---
 
 }

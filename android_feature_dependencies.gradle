@@ -17,7 +17,6 @@ dependencies {
     // TEST
     androidTestImplementation TestLibraries.androidTestRunner
     androidTestImplementation TestLibraries.junit
-    androidTestImplementation project(Modules.commonTest)
     androidTestImplementation TestLibraries.mockkAndroid
     androidTestImplementation TestLibraries.fragmentNav
     androidTestImplementation TestLibraries.espresso
@@ -29,5 +28,4 @@ dependencies {
     testImplementation TestLibraries.mockk
     testImplementation TestLibraries.archCoreTest
     kaptAndroidTest TestLibraries.databinding
-    testImplementation project(Modules.commonTest)
 }

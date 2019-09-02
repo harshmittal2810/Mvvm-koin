@@ -1,6 +1,5 @@
 package com.harsh.remote
 
-import com.harsh.model.ApiResult
 import com.harsh.model.CategoryData
 import com.harsh.model.Master
 import kotlinx.coroutines.Deferred

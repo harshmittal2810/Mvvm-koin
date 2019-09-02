@@ -11,11 +11,11 @@ class FragmentSectionsAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
   private var masterList: MutableList<Master> = mutableListOf()
 
   override fun getItem(position: Int): Fragment {
+    val master = masterList[position]
     Log.e(
-      "FragmentSection",
-      "Data ${masterList[position].data} Name ${masterList[position].name}"
+      "FragmentSection", "Data ${master.data} Name ${master.name}"
     )
-    return CategoryFragment.newInstance(masterList[position])
+    return CategoryFragment.newInstance(master.data)
   }
 
   fun prepareTabs(list: MutableList<Master>) {

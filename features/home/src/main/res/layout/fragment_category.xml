@@ -7,10 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      app:showWhenLoading="@{viewmodel.isLoading}">
 
       <ImageView
         android:id="@+id/fragment_home_image_empty_list"
@@ -58,6 +58,16 @@
         app:spanCount="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+      style="@style/Widget.AppCompat.ProgressBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:hideWhenLoaded="@{viewmodel.isLoading}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -26,14 +26,12 @@ class HomeViewModel(
   private val _master = MediatorLiveData<Resource<List<Master>>>()
   val mastersData: LiveData<Resource<List<Master>>> get() = _master
   private var usersSource: LiveData<Resource<List<Master>>> = MutableLiveData()
+  private val _isLoading = MutableLiveData<Resource.Status>()
+  val isLoading: LiveData<Resource.Status> get() = _isLoading
 
   init {
     getMasters(false)
   }
-
-  // PUBLIC ACTIONS ---
-//    fun userClicksOnItem(user: User)
-//            = navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(user.login))
 
   fun userRefreshesItems() = getMasters(true)
 

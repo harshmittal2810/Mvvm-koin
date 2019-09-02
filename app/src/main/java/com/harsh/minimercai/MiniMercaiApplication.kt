@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level.DEBUG
 
-open class App : Application() {
+open class MiniMercaiApplication : Application() {
   override fun onCreate() {
     super.onCreate()
     configureDi()
@@ -17,7 +17,7 @@ open class App : Application() {
   open fun configureDi() =
     startKoin {
       androidLogger(DEBUG)
-      androidContext(this@App)
+      androidContext(this@MiniMercaiApplication)
       modules(appComponent)
     }
 }

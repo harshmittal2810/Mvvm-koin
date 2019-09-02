@@ -5,29 +5,33 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.harsh.common.base.BaseFragment
 import com.harsh.common.base.BaseViewModel
 import com.harsh.home.databinding.FragmentCategoryBinding
 import com.harsh.home.views.CategoryAdapter
-import com.harsh.model.Master
+import com.harsh.model.CategoryData
+import com.harsh.repository.utils.Resource
+import com.harsh.repository.utils.Resource.Status.SUCCESS
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
 /**
  * A simple [BaseFragment] subclass
- * that will show the [CategoryData] details.
+ * that will show the [CategoryData] list.
  */
 class CategoryFragment : BaseFragment() {
 
   companion object {
-    lateinit var master: Master
-    fun newInstance(master: Master): CategoryFragment {
+    fun newInstance(url: String): CategoryFragment {
       Log.e(
         "Category",
-        "Data ${master.data} Name ${master.name}"
+        "Data $url"
       )
-      this.master = master
-      return CategoryFragment()
+      val bundle = Bundle()
+      bundle.putString("data", url)
+      val categoryFragment = CategoryFragment()
+      categoryFragment.arguments = bundle
+      return categoryFragment
     }
   }
 
@@ -48,13 +52,22 @@ class CategoryFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel.loadDataWhenActivityStarts(master.data)
+
+    viewModel.loadDataWhenActivityStarts(arguments?.getString("data") ?: "")
     configureRecyclerView()
   }
 
   private fun configureRecyclerView() {
     binding.fragmentCategoryRv.adapter = CategoryAdapter(viewModel)
+    viewModel.categoryData.observe(this, changeObserver)
   }
+
   override fun getViewModel(): BaseViewModel = viewModel
 
+  private val changeObserver = Observer<Resource<List<CategoryData>>> { value ->
+    if (value.status == SUCCESS) {
+      val adapter = binding.fragmentCategoryRv.adapter as CategoryAdapter
+      value.data?.let { adapter.updateData(it) }
+    }
+  }
 }

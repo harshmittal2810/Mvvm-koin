@@ -14,8 +14,6 @@ dependencies {
     implementation Libraries.roomRunTime
     implementation Libraries.roomKtx
     implementation AndroidLibraries.lifecycleExtensions
-    // TEST MODULE
-    androidTestImplementation project(Modules.commonTest)
     // DATA MODULE
     implementation project(Modules.model)
     // KOIN

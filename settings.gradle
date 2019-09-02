@@ -5,7 +5,6 @@ include ':data:model'
 include ':data:local'
 include ':data:repository'
 include ':features:home'
-include ':common_test'
 include ':navigation'
 
 rootProject.name = 'MiniMercai'

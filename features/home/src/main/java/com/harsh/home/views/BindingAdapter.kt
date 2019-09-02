@@ -25,10 +25,23 @@ object BindingAdapter {
 
   @BindingAdapter("app:showWhenLoading")
   @JvmStatic
-  fun showWhenLoading(view: SwipeRefreshLayout, status: Resource.Status?) {
+  fun showWhenLoading(view: View, status: Resource.Status?) {
     Log.d(BindingAdapter::class.java.simpleName, "Status: $status")
     status?.let {
-      view.isRefreshing = it == Resource.Status.LOADING
+      view.visibility = if (status == Resource.Status.SUCCESS
+      ) View.VISIBLE else View.INVISIBLE
+
+    }
+  }
+
+  @BindingAdapter("app:hideWhenLoaded")
+  @JvmStatic
+  fun hideWhenLoaded(view: View, status: Resource.Status?) {
+    Log.d(BindingAdapter::class.java.simpleName, "Status: $status")
+    status?.let {
+      view.visibility = if (status == Resource.Status.SUCCESS || status == Resource.Status.ERROR
+      ) View.GONE else View.VISIBLE
+
     }
   }
 

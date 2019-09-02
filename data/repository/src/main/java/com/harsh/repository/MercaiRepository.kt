@@ -50,12 +50,19 @@ class MercaiRepositoryImpl(
       override fun processResponse(response: List<CategoryData>): List<CategoryData> =
         response
 
-      override suspend fun saveCallResults(items: List<CategoryData>) = categoryDao.save(items)
+      override suspend fun saveCallResults(items: List<CategoryData>) {
+        items.forEach {
+          it.apply {
+            it.categoryName = url
+          }
+        }
+        categoryDao.save(items)
+      }
 
       override fun shouldFetch(data: List<CategoryData>?): Boolean =
         data == null || data.isEmpty() || forceRefresh
 
-      override suspend fun loadFromDb(): List<CategoryData> = categoryDao.getCategoryList()
+      override suspend fun loadFromDb(): List<CategoryData> = categoryDao.getCategoryList(url)
 
       override fun createCallAsync(): Deferred<List<CategoryData>> =
         datasource.fetchCategoryJson(url)

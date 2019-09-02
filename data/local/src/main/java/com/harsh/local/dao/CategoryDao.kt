@@ -8,8 +8,8 @@ import java.util.Date
 @Dao
 abstract class CategoryDao : BaseDao<CategoryData>() {
 
-  @Query("SELECT * FROM CategoryData")
-  abstract suspend fun getCategoryList(): List<CategoryData>
+  @Query("SELECT * FROM CategoryData WHERE categoryName = :categoryName ORDER BY name")
+  abstract suspend fun getCategoryList(categoryName: String): List<CategoryData>
 
   @Query("SELECT * FROM CategoryData WHERE name = :name")
   abstract suspend fun getCategoryData(name: String): CategoryData
