@@ -8,6 +8,21 @@
   <fragment
     android:id="@+id/homeFragment"
     android:name="com.harsh.home.HomeFragment"
-    android:label="Mini Mercai"/>
+    android:label="Mercai">
+
+    <!-- Go to Detail Fragment (Its graph is responsible to handle response) -->
+    <action
+      android:id="@+id/action_homeFragment_to_productFragment"
+      app:destination="@id/addProductFragment">
+      <argument
+        android:name="add"
+        app:argType="string" />
+    </action>
+  </fragment>
+
+  <fragment
+    android:id="@+id/addProductFragment"
+    android:name="com.harsh.home.CategoryFragment"
+    android:label="Add Product" />
 
 </navigation>

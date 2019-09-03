@@ -35,6 +35,11 @@ class HomeViewModel(
 
   fun userRefreshesItems() = getMasters(true)
 
+  fun userClicksOnFab() {
+    //TODO Calling add fragment on this
+//    navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment("Adding"))
+  }
+
   // ---
 
   private fun getMasters(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {

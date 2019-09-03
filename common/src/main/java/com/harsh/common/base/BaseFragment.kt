@@ -12,34 +12,34 @@ import com.harsh.common.extension.setupSnackbar
 import com.harsh.common.utils.Event
 import com.harsh.navigation.NavigationCommand
 
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment : Fragment() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        observeNavigation(getViewModel())
-        setupSnackbar(this, getViewModel().snackBarError, Snackbar.LENGTH_LONG)
-    }
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    observeNavigation(getViewModel())
+    setupSnackbar(this, getViewModel().snackBarError, Snackbar.LENGTH_LONG)
+  }
 
-    abstract fun getViewModel(): BaseViewModel
+  abstract fun getViewModel(): BaseViewModel
 
-    // UTILS METHODS ---
-    /**
-     * Observe a [NavigationCommand] [Event] [LiveData].
-     * When this [LiveData] is updated, [Fragment] will navigate to its destination
-     */
-    private fun observeNavigation(viewModel: BaseViewModel) {
-        viewModel.navigation.observe(viewLifecycleOwner, Observer {
-            it?.getContentIfNotHandled()?.let { command ->
-                when (command) {
-                    is NavigationCommand.To -> findNavController().navigate(command.directions, getExtras())
-                    is NavigationCommand.Back -> findNavController().navigateUp()
-                }
-            }
-        })
-    }
+  // UTILS METHODS ---
+  /**
+   * Observe a [NavigationCommand] [Event] [LiveData].
+   * When this [LiveData] is updated, [Fragment] will navigate to its destination
+   */
+  private fun observeNavigation(viewModel: BaseViewModel) {
+    viewModel.navigation.observe(viewLifecycleOwner, Observer {
+      it?.getContentIfNotHandled()?.let { command ->
+        when (command) {
+          is NavigationCommand.To -> findNavController().navigate(command.directions, getExtras())
+          is NavigationCommand.Back -> findNavController().navigateUp()
+        }
+      }
+    })
+  }
 
-    /**
-     * [FragmentNavigatorExtras] mainly used to enable Shared Element transition
-     */
-    open fun getExtras(): FragmentNavigator.Extras = FragmentNavigatorExtras()
+  /**
+   * [FragmentNavigatorExtras] mainly used to enable Shared Element transition
+   */
+  open fun getExtras(): FragmentNavigator.Extras = FragmentNavigatorExtras()
 }

@@ -28,32 +28,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-          android:id="@+id/image_product"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:adjustViewBounds="true"
-          android:background="#ffffff"
-          android:scaleType="centerCrop"
-          app:imageUrl="@{product.photo}"
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          tools:ignore="contentDescription"
-          tools:src="@tools:sample/backgrounds/scenic" />
+          app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-          android:id="@+id/image_sold_out"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:src="@drawable/img_sold_out"
-          app:layout_constraintHeight_percent="0.5"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintWidth_percent="0.5"
-          app:showWhenSoldOut="@{product.status}"
-          tools:ignore="contentDescription" />
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="#ffffff"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{product.photo}"
+
+            tools:ignore="contentDescription"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_sold_out"
+            android:layout_width="110dp"
+            android:layout_height="64dp"
+            android:src="@drawable/badge_soldout"
+            app:showWhenSoldOut="@{product.status}"
+            tools:ignore="contentDescription" />
+        </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
           android:layout_width="match_parent"
